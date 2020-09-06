@@ -1,6 +1,6 @@
 <template>
  <div>
-	<select name="slector" >
+	<select name="selector" >
 		<option :key="option" v-for="option in options" > {{option}} </option>
 	</select>
 		{{this.$store.state.coffee.type}}
