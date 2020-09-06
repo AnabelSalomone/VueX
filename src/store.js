@@ -5,11 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state:{
-    sizes: ["large", "medium", "small"],
     order: [],
+    sizes: ["large", "medium", "small"],
     coffeetypes: ["dark", "strong", "light"],
+    extras: ["no extras", "sugar", "milk", "cream"],
     coffee: {
-      "type": "",
+      "type": "pouet pouet",
       "size": "",
       "extra": "",
       "price": 0,
@@ -18,20 +19,26 @@ export default new Vuex.Store({
       }
   },
   getters: {
-    getSizes(state){
-      return state.sizes
-    },
     getOrder(state){
       return state.getOrder
     },
+    getSizes(state){
+      return state.sizes
+    },
     getCoffeeTypes(state) {
       return state.coffeetypes
+    },
+    getExtras(state) {
+    return state.extras
     },
     getCoffee (state) {
       return state.coffee
     }
   },
   mutations: {
+    mutateOrder(state, order){
+      state.order = order
+    },
     mutateCoffeeType(state, type){
       state.coffee.type = type
     },
@@ -50,5 +57,10 @@ export default new Vuex.Store({
     mutateCoffeeDetailExtra(state, detailExtra){
       state.coffee.detailExtra = detailExtra
     }
+  },
+  actions: {
+    changeCoffeeType({commit}, opt){
+      commit("mutateCoffeeType", opt)
+   }
   }
 })

@@ -1,10 +1,10 @@
 <template>
  <div>
-	<select name="selector" >
-		<option :key="option" v-for="option in options" > {{option}} </option>
+	<select name="selector" @change="onOptionChange($event)" v-model="selectedCoffee">
+    <option disabled value="">Choisissez</option>
+		<option :key="option" v-for="option in options" :value=option> {{option}} </option>
 	</select>
-		{{this.$store.state.coffee.type}}
-
+  {{ selectedCoffee }}
  </div>
 </template>
 
@@ -16,7 +16,12 @@ export default {
   },
   data(){
     return {
-      selectedCoffeeType:""
+      selectedCoffee:""
+    }
+  },
+  methods: {
+    onOptionChange: function(event) {
+      this.$emit('selection', event.target.value)
     }
   }
 }
