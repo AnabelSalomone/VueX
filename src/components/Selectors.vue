@@ -1,20 +1,24 @@
 <template>
   <div>
-    <selector-coffee :options='types'> </selector-coffee>
+    <custom-selector :options='types'> </custom-selector>
+    <custom-selector :options='sizes'> </custom-selector>
   </div>
 </template>
 
 <script>
-import SelectorCoffee from './SelectorCoffee.vue'
+import CustomSelector from './CustomSelector.vue'
 
 export default {
   name: 'Selectors',
   components: {
-    SelectorCoffee
+    CustomSelector
   },
   computed: {
     types(){
-      return this.$store.state.coffeetypes
+      return this.$store.getters.getCoffeeTypes
+    },
+    sizes(){
+      return this.$store.getters.getSizes
     }
   },
 }

@@ -9,7 +9,7 @@ export default new Vuex.Store({
     order: [],
     coffeetypes: ["dark", "strong", "light"],
     coffee: {
-      "type": "poo",
+      "type": "",
       "size": "",
       "extra": "",
       "price": 0,
